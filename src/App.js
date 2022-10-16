@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Home from "./pages/Home";
+import Test2 from "./pages/Test2";
 import TestPage from "./pages/TestPage";
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/test" element={<TestPage/>}/>
+          <Route path="/test2start" element={<Test2/>}/>
+          <Route path="/test/:testId" element={<TestPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

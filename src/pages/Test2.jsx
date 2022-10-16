@@ -81,25 +81,25 @@ const StartButton = styled.button`
     cursor: pointer;
 `
 
-const TestSelect = () => {
+const Test2 = () => {
     const navigate = useNavigate()
   
-  return (
-    <TestWrapper>
-        <TestForm>
-            <TextBlockOne>
-                <p>Hello <strong>Jestin,</strong></p>
-            </TextBlockOne>
-            <TextBlockTwo>
-                <p>Thank you for applying to KnowMeQ and welcome to our assessment.</p>
-                <p>There are two test that you need to complete, click on the button below to start your first test! </p>Good luck!
-            </TextBlockTwo>
-            <ButtonBlock>
-                <StartButton onClick={()=>navigate('/test/1')}>Start Test 1</StartButton>
-            </ButtonBlock>
-        </TestForm>
-    </TestWrapper>
-  )
+    return (
+      <TestWrapper>
+          <TestForm>
+              <TextBlockOne>
+                  <p>Hello <strong>Jestin,</strong></p>
+              </TextBlockOne>
+              <TextBlockTwo>
+                  <p>Thank you for completing first test.</p>
+                  <p>Click below to start your second test </p>Good luck!
+              </TextBlockTwo>
+              <ButtonBlock>
+                  <StartButton onClick={()=>navigate('/test/2')}>Start Test 2</StartButton>
+              </ButtonBlock>
+          </TestForm>
+      </TestWrapper>
+    )
 }
 
-export default TestSelect
+export default Test2
