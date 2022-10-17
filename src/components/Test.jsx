@@ -23,11 +23,28 @@ const size = {
     desktopL: `(min-width: ${size.desktop})`
   };
 
+  const TestWrapper = styled.div`
+  background-color: #fff;
+  width: 80%;
+  margin: 20px;
+  padding: 20px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 12px;
+`
+
 const ButtonBlock = styled.div`
 flex: 1 1 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: flex-start;
 @media ${device.tablet} {
     flex-direction: row;
 }
@@ -41,14 +58,19 @@ color: #fff;
 font-size: 18px;
 border-radius: 4px;
 cursor: pointer;
+:disabled {
+    opacity: 0.4;
+}
 `
 
 const Test = (props) => {
     const data = props.data
     const [responses, setResponses] = useState([])
+    const [choiceSelected, setChoiceSelected] = useState(true)
+    const [selectedChoiceIndex, setSelectedChoiceIndex] = useState(-1)
 
     const handleChange = (choice, id) => {
-        
+        setChoiceSelected(false)
         const i = responses?.findIndex(e => e.id === id)
         setResponses((prev) => {
             if(i === -1){
@@ -58,19 +80,20 @@ const Test = (props) => {
                 temp[i].choice = choice
                 return temp
             }
-            
         })
         console.log(responses)
     }
 
+    const handleNextClick = () => {
+        setChoiceSelected(true)
+        props.onChange()
+    }
+
   return (
-    <>
+    <TestWrapper>
         <Question question={data.question}/>
-        <Choices id={data.id} choices={data.choices} onChange={handleChange}/>
-        <ButtonBlock>
-            <StartButton onClick={()=>props.onChange()}>Next</StartButton>
-        </ButtonBlock>
-    </>
+        <Choices id={data.id} choices={data.choices} selectedChoice={selectedChoiceIndex} onChange={handleChange} onClick={handleNextClick}/>
+    </TestWrapper>
   )
 }
 

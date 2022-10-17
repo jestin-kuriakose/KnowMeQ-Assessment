@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components'
-import Choices from '../components/Choices';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Question from '../components/Question';
 import Test from '../components/Test';
 import testData from '../dummyData'
 
@@ -17,7 +14,7 @@ const size = {
     laptopL: '1440px',
     desktop: '2560px'
   }
-  const device = {
+const device = {
     mobileS: `(min-width: ${size.mobileS})`,
     mobileM: `(min-width: ${size.mobileM})`,
     mobileL: `(min-width: ${size.mobileL})`,
@@ -69,12 +66,19 @@ const TestPage = () => {
     const handleChange = () => {
         let countOne = testDataOne.length
         let countTwo = testDataTwo.length
-        if(questionCount < countOne-1) {
-            setQuestionCount(prev=>prev+1)
+        if(testId == 1) {
+            if(questionCount < countOne-1) {
+                setQuestionCount(prev=>prev+1)
+            } else {
+                navigate('/test-2')
+            }
         } else {
-            navigate('/test2start')
+            if(questionCount < countTwo-1) {
+                setQuestionCount(prev=>prev+1)
+            } else {
+                navigate('/test-results')
+            }
         }
-        
     }
     
   return (

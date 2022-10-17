@@ -1,3 +1,4 @@
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
@@ -81,25 +82,24 @@ const StartButton = styled.button`
     cursor: pointer;
 `
 
-const Test2 = () => {
+const TestResultsPage = () => {
     const navigate = useNavigate()
-  
-    return (
-      <TestWrapper>
+  return (
+    <TestWrapper>
           <TestForm>
               <TextBlockOne>
                   <p>Hello <strong>Jestin,</strong></p>
               </TextBlockOne>
               <TextBlockTwo>
-                  <p>Thank you for completing first test.</p>
-                  <p>Click below to start your second test </p>Good luck!
+                  <p>Thank you for completing your tests</p>
+                  <p>We will reach out to you if we have any questions. </p>Thank you
               </TextBlockTwo>
               <ButtonBlock>
-                  <StartButton onClick={()=>navigate('/test/2')}>Start Test 2</StartButton>
-              </ButtonBlock>
+                <StartButton onClick={()=>navigate('/')}>Home</StartButton>
+            </ButtonBlock>
           </TestForm>
       </TestWrapper>
-    )
+  )
 }
 
-export default Test2
+export default TestResultsPage
